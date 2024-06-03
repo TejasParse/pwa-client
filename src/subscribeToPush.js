@@ -11,7 +11,7 @@ const subscribeUserToPush = async (registration) => {
         console.log('Push Subscription:', subscription);
 
         // Send subscription to your server
-        await fetch('/subscribe', {
+        await fetch(`${process.env.VITE_APP_PUBLIC_API_URL}/subscribe`, {
             method: 'POST',
             body: JSON.stringify(subscription),
             headers: {
