@@ -20,6 +20,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('push', (event) => {
 
     console.log("Something is pushed bro", event);
+    console.log("Something is pushed bro Data:", event.data);
 
     const data = event.data.json()
     const options = {
