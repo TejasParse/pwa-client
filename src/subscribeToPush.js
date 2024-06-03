@@ -2,7 +2,7 @@ import { urlB64ToUint8Array } from './utils';
 
 
 const subscribeUserToPush = async (registration) => {
-    const applicationServerKey = urlB64ToUint8Array(process.env.VITE_APP_PUBLIC_VAPID_KEY);
+    const applicationServerKey = urlB64ToUint8Array(import.meta.env.VITE_APP_PUBLIC_VAPID_KEY);
     try {
         const subscription = await registration.pushManager.subscribe({
             userVisibleOnly: true,
@@ -11,7 +11,7 @@ const subscribeUserToPush = async (registration) => {
         console.log('Push Subscription:', subscription);
 
         // Send subscription to your server
-        await fetch(`${process.env.VITE_APP_PUBLIC_API_URL}/subscribe`, {
+        await fetch(`${import.meta.env.VITE_APP_PUBLIC_API_URL}/subscribe`, {
             method: 'POST',
             body: JSON.stringify(subscription),
             headers: {
